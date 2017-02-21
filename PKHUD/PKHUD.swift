@@ -31,6 +31,11 @@ open class PKHUD: NSObject {
     /// Defaults to 0 (no grace time).
     public var graceTime: TimeInterval = 0
     fileprivate var graceTimer: Timer?
+    public var tintColor: UIColor? = .black {
+      didSet {
+        container.frameView.content.tintColor = tintColor
+      }
+    }
 
     // MARK: Public
 
@@ -83,6 +88,7 @@ open class PKHUD: NSObject {
         }
         set {
             container.frameView.content = newValue
+            container.frameView.content.tintColor = tintColor
             startAnimatingContentView()
         }
     }
